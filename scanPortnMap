@@ -1,0 +1,16 @@
+import nmap
+
+# Créez un objet nmap.PortScanner()
+nm = nmap.PortScanner()
+
+# Définissez l'adresse IP à scanner
+ip = '192.168.1.1'
+
+# Scannez les ports ouverts sur l'adresse IP
+nm.scan(ip, arguments='-p 1-65535')
+
+# Affichez les ports ouverts détectés
+for host in nm.all_hosts():
+    print("Les ports ouverts sur l'adresse IP %s sont :" % host)
+    for port in nm.all_tcp():
+        print("%s/tcp" % port)
